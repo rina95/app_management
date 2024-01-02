@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :book_meeting do
     
   end
 end

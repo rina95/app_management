@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :library_app do
     
   end
 end
