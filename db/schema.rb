@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_16_072539) do
     t.string "commentable_type"
     t.text "comment"
     t.string "user_id"
+    t.integer "comment_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
@@ -148,8 +149,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_16_072539) do
     t.string "email"
     t.string "confluence_id"
     t.integer "role"
+    t.string "password_digest"
+    t.datetime "latest_pw_updated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
