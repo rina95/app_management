@@ -30,4 +30,147 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  direction: ltr
+    date:
+      formats:
+        # Use the strftime parameters for formats.
+        # When no format has been given, it uses default.
+        # You can provide other formats here if you like!
+        default: "%m/%d/%Y"
+        short: "%b %d"
+        long: "%B %d, %Y"
+
+      day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+      abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+      # Don't forget the nil at the beginning; there's no such thing as a 0th month
+      month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+      abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+      # Used in date_select and datime_select.
+      order:
+        - :year
+        - :month
+        - :day
+    time:
+      formats:
+        default: "%m/%d/%Y %I:%M %p"
+        time: "%I:%M %p"
+        short: "%d %b %H:%M"
+        long: "%B %d, %Y %H:%M"
+      am: "am"
+      pm: "pm"
+    datetime:
+      distance_in_words:
+        half_a_minute: "half a minute"
+        less_than_x_seconds:
+          one:   "less than 1 second"
+          other: "less than %{count} seconds"
+        x_seconds:
+          one:   "1 second"
+          other: "%{count} seconds"
+        less_than_x_minutes:
+          one:   "less than a minute"
+          other: "less than %{count} minutes"
+        x_minutes:
+          one:   "1 minute"
+          other: "%{count} minutes"
+        about_x_hours:
+          one:   "about 1 hour"
+          other: "about %{count} hours"
+        x_hours:
+          one:   "1 hour"
+          other: "%{count} hours"
+        x_days:
+          one:   "1 day"
+          other: "%{count} days"
+        about_x_months:
+          one:   "about 1 month"
+          other: "about %{count} months"
+        x_months:
+          one:   "1 month"
+          other: "%{count} months"
+        about_x_years:
+          one:   "about 1 year"
+          other: "about %{count} years"
+        over_x_years:
+          one:   "over 1 year"
+          other: "over %{count} years"
+        almost_x_years:
+          one:   "almost 1 year"
+          other: "almost %{count} years"
+    number:
+      format:
+        separator: "."
+        delimiter: ""
+        precision: 3
+      human:
+        format:
+          delimiter: ""
+          precision: 3
+        storage_units:
+          format: "%n %u"
+          units:
+            byte:
+              one: "Byte"
+              other: "Bytes"
+            kb: "KB"
+            mb: "MB"
+            gb: "GB"
+            tb: "TB"
+  controllers:
+    flash:
+      common:
+        create_success: "%{objects} created success!"
+        create_error: "%{objects} is not created."
+        update_success: "%{objects} updated success!"
+        update_error: "%{objects} is not updated!"
+        destroy_success: "%{objects} destroyed success!"
+        destroy_error: "%{objects} is not delete!"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "cannot be empty"
+        blank: "cannot be blank"
+        too_long: "is too long (maximum is %{count} characters)"
+        too_short: "is too short (minimum is %{count} characters)"
+        wrong_length: "is the wrong length (should be %{count} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        not_a_date: "is not a valid date"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        odd: "must be odd"
+        even: "must be even"
+        greater_than_start_date: "must be greater than start date"
+        not_same_project: "doesn't belong to the same project"
+        circular_dependency: "This relation would create a circular dependency"
+        cant_link_an_issue_with_a_descendant: "An issue cannot be linked to one of its subtasks"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
+    model:
+  views:
+    function:
+      title: "Action"
+      new: ""
+      edit: ""
+      show: ""
+      delete: ""
+    field:
+      id: "ID"
+      name: "Name"
+      code: "Code"
+      software_version: "Version"
+      title: "Title"
+      document_link: "Link"
+      urgent: "Urgent"

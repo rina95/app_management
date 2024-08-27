@@ -1,0 +1,77 @@
+<%= form_with(model: plan, local: true) do |form| %>
+  <% if plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :software_id %>
+    <%= collection_select(:plan, :software_id, Software.all, :id, :name, {}, {class: 'form-control'}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :software_version %>
+    <%= form.text_field :software_version, id: :software_version, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :code %>
+    <%= form.number_field :code, id: :plan_code, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :plan_title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :document_link %>
+    <%= form.text_field :document_link, id: :plan_document_link, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :expect_approval_date %>
+    <%= form.date_field :expect_approval_date, id: :plan_expect_approval_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :app_type %>
+    <%= form.select :app_type, options_for_select(Plan.kind.keys.map { |obj| [obj.humanize, obj] }, @post.kind), {}, {class: 'form-control'})  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :app_type_text %>
+    <%= form.text_field :app_type_text, id: :plan_app_type_text, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :request_type %>
+    <%= form.select :request_type, options_for_select(Plan.request_type.keys.map { |obj| [obj.humanize, obj] }, @post.kind) {}, {class: 'form-control'})  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :contact_user %>
+    <%= form.text_field :contact_user, id: :plan_contact_user, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :urgent %>
+    <%= form.check_box :urgent, id: :plan_active %>
+  </div>
+
+  <div class="actions">
+	<%= link_to plans_path, :class => "btn btn-default" do %>
+		<i class="fa fa-arrow-left"></i> Back
+	<% end %>
+    <%= button_tag type: 'submit', class: 'btn btn-success' do %>
+		<i class="fa fa-hdd-o"></i> Save
+	<% end %>
+  </div>
+<% end %>
