@@ -1,6 +1,9 @@
 /* Updated SCSS import */
 // @import "file";
+// @import "bootstrap-sprockets";
+// @import "bootstrap-compass";
 @import "bootstrap";
+@import "layout";
 
 .divider:after,
 .divider:before {

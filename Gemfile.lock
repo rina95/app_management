@@ -74,9 +74,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (5.3.3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
     builder (3.2.4)
     capybara (3.39.1)
       addressable
@@ -219,6 +219,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
+    popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -350,9 +351,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  autoprefixer-rails
   bcrypt (~> 3.1)
   bootsnap
-  bootstrap-sass (~> 3.4.1)
+  bootstrap (~> 5.3.3)
   capybara
   config
   cssbundling-rails

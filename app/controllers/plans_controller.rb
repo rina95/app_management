@@ -19,8 +19,7 @@ class PlansController < ApplicationController
       flash[:success] = "plan successfully created"
       redirect_to @plan
     else
-      flash[:error] = "Something went wrong"
-      render 'new'
+      render :new
     end
   end
 
@@ -32,8 +31,7 @@ class PlansController < ApplicationController
       flash[:success] = "plan was successfully updated"
       redirect_to @plan
     else
-      flash[:error] = "Something went wrong"
-      render 'edit'
+      render :edit
     end
   end
   
@@ -42,7 +40,7 @@ class PlansController < ApplicationController
       flash[:success] = 'plan was successfully deleted.'
       redirect_to plans_url
     else
-      flash[:error] = 'Something went wrong'
+      flash[:error] = 'Fail to delete!'
       redirect_to plans_url
     end
   end

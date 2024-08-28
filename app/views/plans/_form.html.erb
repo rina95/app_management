@@ -1,15 +1,5 @@
-<%= form_with(model: plan, local: true) do |form| %>
-  <% if plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
-
-      <ul>
-      <% plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with model: plan, local: true do |form| %>
+  <%= render "devise/shared/error_messages", resource: plan %>
 
   <div class="form-group">
     <%= form.label :software_id %>
@@ -43,7 +33,7 @@
 
   <div class="form-group">
     <%= form.label :app_type %>
-    <%= form.select :app_type, options_for_select(Plan.kind.keys.map { |obj| [obj.humanize, obj] }, @post.kind), {}, {class: 'form-control'})  %>
+    <%= form.select :app_type, options_for_select(Plan.app_types.keys.map { |obj| [obj.humanize, obj] }, @plan.app_type), {}, {class: 'form-control'} %>
   </div>
 
   <div class="form-group">
@@ -53,7 +43,7 @@
 
   <div class="form-group">
     <%= form.label :request_type %>
-    <%= form.select :request_type, options_for_select(Plan.request_type.keys.map { |obj| [obj.humanize, obj] }, @post.kind) {}, {class: 'form-control'})  %>
+    <%= form.select :request_type, options_for_select(Plan.request_types.keys.map { |obj| [obj.humanize, obj] }, @plan.request_type), {}, {class: 'form-control'} %>
   </div>
 
   <div class="form-group">
@@ -67,11 +57,11 @@
   </div>
 
   <div class="actions">
-	<%= link_to plans_path, :class => "btn btn-default" do %>
-		<i class="fa fa-arrow-left"></i> Back
-	<% end %>
+    <%= link_to plans_path, class: "btn btn-default" do %>
+      <i class="fa fa-arrow-left"></i> Back
+    <% end %>
     <%= button_tag type: 'submit', class: 'btn btn-success' do %>
-		<i class="fa fa-hdd-o"></i> Save
-	<% end %>
+      <i class="fa fa-hdd-o"></i> Save
+    <% end %>
   </div>
 <% end %>
