@@ -33,6 +33,15 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # # Enable caching in development
+  # config.action_controller.perform_caching = true
+
+  # # Use Rack::Cache for HTTP caching
+  # config.action_dispatch.rack_cache = {
+  #   metastore: 'file:tmp/cache/rack/meta',
+  #   entitystore: 'file:tmp/cache/rack/body'
+  # }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 

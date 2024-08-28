@@ -54,6 +54,19 @@ gem 'jsonapi-serializer'
 gem 'kaminari'
 gem 'rack-cors'
 gem 'faraday'
+gem "devise", "~> 4.9"
+
+# for bootstrap
+gem 'jquery-rails'
+gem 'bootstrap', '~> 5.3.3'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'autoprefixer-rails'
+
+# for search
+gem 'ransack'
+
+# for cahce
+# gem 'rack-cache'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

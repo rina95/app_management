@@ -1,0 +1,61 @@
+<h2>Plan Details</h2>
+
+<div class="form-group">
+  <strong><%= t 'views.field.software_id' %>:</strong>
+  <%= @plan.software.name %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.software_version' %>:</strong>
+  <%= @plan.software_version %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.code' %>:</strong>
+  <%= @plan.code %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.title' %>:</strong>
+  <%= @plan.title %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.document_link' %>:</strong>
+  <%= link_to @plan.document_link, @plan.document_link, target: '_blank' %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.expect_approval_date' %>:</strong>
+  <%= @plan.expect_approval_date %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.app_type' %>:</strong>
+  <%= @plan.app_type.humanize %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.app_type_text' %>:</strong>
+  <%= @plan.app_type_text %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.request_type' %>:</strong>
+  <%= @plan.request_type.humanize %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.contact_user' %>:</strong>
+  <%= @plan.contact_user %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.urgent' %>:</strong>
+  <%= @plan.urgent ? 'Yes' : 'No' %>
+</div>
+
+<div class="actions">
+  <%= link_to 'Back', plans_path, class: "btn btn-default" %>
+  <%= link_to 'Edit', edit_plan_path(@plan), class: "btn btn-primary" %>
+</div>

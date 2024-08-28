@@ -1,4 +1,6 @@
 class Plan < ApplicationRecord
+  PARAMS = %i()
+
   enum :app_type, {
     new_app: 0,
     upgrade_all: 1, # nang cap toan bo
@@ -37,4 +39,20 @@ class Plan < ApplicationRecord
   validates :title, presence: true
   validates :expect_approval_date, presence: true
   validates :contact_user, presence: true
+
+  before_create :set_init_value
+
+  private
+  def set_init_value
+    self.status = :todo
+    self.latest_sent_date = Time.current
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %i(code contact_user title software_name software_code)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["comments", "software"]
+  end
 end
