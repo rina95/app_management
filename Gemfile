@@ -90,3 +90,5 @@ group :test do
   gem "shoulda-matchers", require: false
   gem 'webmock'
 end
+
+gem "importmap-rails", "~> 2.0"

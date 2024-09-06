@@ -1,9 +1,10 @@
 <%= form_with model: plan, local: true do |form| %>
-  <%= render "devise/shared/error_messages", resource: plan %>
+  <%= render "shared/error_messages", resource: plan %>
 
   <div class="form-group">
     <%= form.label :software_id %>
     <%= collection_select(:plan, :software_id, Software.all, :id, :name, {}, {class: 'form-control'}) %>
+    <%= link_to "Create new software?", new_software_path %><br />
   </div>
 
   <div class="form-group">
@@ -13,7 +14,7 @@
 
   <div class="form-group">
     <%= form.label :code %>
-    <%= form.number_field :code, id: :plan_code, class: 'form-control' %>
+    <%= form.text_field :code, id: :plan_code, class: 'form-control' %>
   </div>
 
   <div class="form-group">

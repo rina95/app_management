@@ -42,6 +42,17 @@ class Plan < ApplicationRecord
 
   before_create :set_init_value
 
+  class << self
+    def import(file)
+      CSV.foreach(file.path, headers: true) do |row|
+        plan_attributes = row.to_hash
+        plan = find_by(id: plan_attributes["id"]) || new
+        plan.update(plan_attributes)
+        plan.save!
+      end
+    end
+  end
+
   private
   def set_init_value
     self.status = :todo

@@ -1,0 +1,57 @@
+<%= form_with model: software, local: true do |form| %>
+  <%= render "shared/error_messages", resource: software %>
+
+  <div class="form-group">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :software_code, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :software_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :short_name %>
+    <%= form.text_field :short_name, id: :software_short_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sw_type %>
+    <%= form.select :sw_type, options_for_select(Software.sw_types.keys.map { |obj| [obj.humanize, obj] }, @software.sw_type), {}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :use_db_link %>
+    <%= form.check_box :use_db_link, id: :software_use_db_link %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :use_db_link_reason %>
+    <%= form.text_field :use_db_link_reason, id: :software_use_db_link_reason, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :use_job_schedule %>
+    <%= form.check_box :use_job_schedule, id: :software_use_job_schedule %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :use_history_data %>
+    <%= form.check_box :use_history_data, id: :software_use_history_data %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :in_memory %>
+    <%= form.select :in_memory, options_for_select(Software.in_memories.keys.map { |obj| [obj.humanize, obj] }, @software.in_memory), {}, {class: 'form-control'} %>
+  </div>
+
+  <div class="actions">
+    <%= link_to softwares_path, class: "btn btn-default" do %>
+      <i class="fa fa-arrow-left"></i> Back
+    <% end %>
+    <%= button_tag type: 'submit', class: 'btn btn-success' do %>
+      <i class="fa fa-hdd-o"></i> Save
+    <% end %>
+  </div>
+<% end %>

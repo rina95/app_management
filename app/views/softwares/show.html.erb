@@ -1,0 +1,51 @@
+<h2>Software Details</h2>
+
+<div class="form-group">
+  <strong><%= t 'views.field.code' %>:</strong>
+  <%= @software.code %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.software_id' %>:</strong>
+  <%= @software.name %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.software_version' %>:</strong>
+  <%= @software.short_name %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.sw_type' %>:</strong>
+  <%= @software.sw_type.humanize %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.use_db_link' %>:</strong>
+  <%= @software.use_db_link ? 'Yes' : 'No' %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.use_db_link_reason' %>:</strong>
+  <%= @software.use_db_link_reason %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.use_job_schedule' %>:</strong>
+  <%= @software.use_job_schedule ? 'Yes' : 'No' %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.use_history_data' %>:</strong>
+  <%= @software.use_history_data ? 'Yes' : 'No' %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'views.field.in_memory' %>:</strong>
+  <%= @software.in_memory.humanize %>
+</div>
+
+<div class="actions">
+  <%= link_to 'Back', softwares_path, class: "btn btn-default" %>
+  <%= link_to 'Edit', edit_software_path(@software), class: "btn btn-primary" %>
+</div>

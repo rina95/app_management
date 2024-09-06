@@ -1,0 +1,68 @@
+<h2>librarys</h2>
+
+<div class="gap-3">
+
+	<%= link_to new_library_path, class: "btn btn-success" do %>
+		<i class="bi bi-plus"></i> New library
+	<% end %>
+
+	<div class="search-right">
+		<%= search_form_for @search do |f| %>
+			<%= f.search_field :name_cont, class: 'form-control', placeholder: "Search" %>
+			<%= button_tag type: 'submit', class: 'btn btn-success' do %>
+				<i class="bi bi-search"></i>
+			<% end %>
+		<% end %>
+	</div>
+
+	<%= form_with url: import_libraries_path, multipart: true, method: :post, local: true do |form| %>
+		<div class="form-group">
+			<%= form.file_field :file, accept: ".csv", class: "form-control" %>
+		</div>
+		<div class="actions">
+			<%= form.submit "Import CSV", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+
+	<% if @librarys.length == 0 %>
+		<div class="alert alert-warning">No items registered</div>
+	<% else %>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr class="info">
+					<th><%= t "ID" %></th>
+					<th><%= t "views.field.name" %></th>
+					<th><%= t "views.field.link_doc" %></th>
+					<th><%= t "views.field.version" %></th>
+					<th><%= t "views.function.title" %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @librarys.each do |library| %>
+					<tr>
+						<td><%= library.id %></td>
+						<td><%= library.name %></td>
+						<td>
+							<%= link_to "document link", library.link_doc, class: '' %>
+						</td>
+						<td><%= library.min_version_x %>.<%= library.min_version_y %>.<%= library.min_version_z %></td>
+						<td class="text-center">
+							<%= link_to library, class: "btn btn-default" do %>
+								<i class="bi bi-eye"></i>
+							<% end %>
+							<%= link_to edit_library_path(library), class: "btn btn-primary" do %>
+								<i class="bi bi-pencil"></i>
+							<% end %>
+							<%= link_to library, method: :delete, data: { confirm: "Are you sure you want to remove?" }, class: "btn btn-danger" do %>
+								<i class="bi bi-trash"></i>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="pag-right">
+			<%= paginate @librarys %>
+		</div>
+	<% end %>
+</div>

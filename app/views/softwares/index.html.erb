@@ -1,0 +1,66 @@
+<h2>Software</h2>
+
+<%= link_to new_software_path, class: "btn btn-success" do %>
+	<i class="bi bi-plus"></i> New software
+<% end %>
+
+<div class="search-right">
+	<%= search_form_for @search do |f| %>
+		<%= f.search_field :name_or_code_cont, class: 'form-control', placeholder: "Search" %>
+		<%= button_tag type: 'submit', class: 'btn btn-success' do %>
+			<i class="bi bi-search"></i>
+		<% end %>
+		<br>
+	<% end %>
+</div>
+
+<%= form_with url: import_plans_path, multipart: true, method: :post, local: true do |form| %>
+		<div class="form-group">
+			<%= form.file_field :file, accept: ".csv", class: "form-control" %>
+		</div>
+		<div class="actions">
+			<%= form.submit "Import CSV", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+
+<% if @softwares.length == 0 %>
+	<div class="alert alert-warning">No items registered</div>
+<% else %>
+	<table class="table table-bordered table-striped table-hover">
+	  <thead>
+			<tr class="info">
+				<th><%= t "ID" %></th>
+				<th><%= t "views.field.code" %></th>
+				<th><%= t "views.field.name" %></th>
+				<th><%= t "views.field.short_name" %></th>
+				<th><%= t "views.field.sw_type" %></th>
+				<th><%= t "views.function.title" %></th>
+			</tr>
+	  </thead>
+	  <tbody>
+			<% @softwares.each do |software| %>
+				<tr>
+					<td><%= software.id %></td>
+					<td><%= software.code %></td>
+					<td><%= software.name %></td>
+					<td><%= software.short_name %></td>
+					<td><%= software.sw_type.humanize %></td>
+					<td class="text-center">
+						<%= link_to software, class: "btn btn-default" do %>
+							<i class="bi bi-eye"></i>
+						<% end %>
+						<%= link_to edit_software_path(software), class: "btn btn-primary" do %>
+							<i class="bi bi-pencil"></i>
+						<% end %>
+						<%= link_to software, method: :delete, data: { confirm: "Are you sure you want to remove?" }, class: "btn btn-danger" do %>
+							<i class="bi bi-trash"></i>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+	  </tbody>
+	</table>
+	<div class="pag-right">
+		<%= paginate @softwares %>
+	</div>
+<% end %>

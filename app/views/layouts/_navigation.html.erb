@@ -3,14 +3,14 @@
   <div class="sidebar-logo">
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
-      <a href="index.html" class="logo">
+      <%= link_to root_path, class: "logo" do %>
         <img
           src="assets/img/kaiadmin/logo_light.svg"
           alt="navbar brand"
           class="navbar-brand"
           height="20"
         />
-      </a>
+      <% end %>
       <div class="nav-toggle">
         <button class="btn btn-toggle toggle-sidebar">
           <i class="gg-menu-right"></i>
@@ -29,9 +29,9 @@
     <div class="sidebar-content">
       <ul class="nav nav-secondary">
         <li class="nav-item active">
-          <%= link_to plans_path, class: 'nav-link' do %>
+          <%= link_to root_path, class: 'nav-link' do %>
             <i class="fas fa-home"></i>
-            <p>Dashboard</p>
+            <p>Home</p>
           <% end %>
         </li>
         <li class="nav-section">
@@ -39,6 +39,24 @@
             <i class="fa fa-ellipsis-h"></i>
           </span>
           <h4 class="text-section">Components</h4>
+        </li>
+        <li class="nav-item">
+          <%= link_to softwares_path, class: 'nav-link' do %>
+            <i class="fas fa-home"></i>
+            <p>Softwares</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to plans_path, class: 'nav-link' do %>
+            <i class="fas fa-home"></i>
+            <p>Plans</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to meetings_path, class: 'nav-link' do %>
+            <i class="fas fa-home"></i>
+            <p>Meetings</p>
+          <% end %>
         </li>
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#base">

@@ -23,6 +23,15 @@ class PlansController < ApplicationController
     end
   end
 
+  def import
+    if params[:file].present?
+      Plan.import(params[:file])
+      redirect_to plans_path, notice: "Plans imported successfully."
+    else
+      redirect_to plans_path, alert: "Please upload a CSV file."
+    end
+  end
+
   def edit
   end
 
